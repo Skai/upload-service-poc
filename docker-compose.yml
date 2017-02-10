@@ -1,0 +1,66 @@
+version: '2.1'
+services:
+  client:
+    extends:
+      file: services.yml
+      service: client
+    links:
+      - app:backend
+
+  app:
+    extends:
+      file: services.yml
+      service: app
+    depends_on:
+      broker:
+        condition: service_healthy
+
+  broker:
+    extends:
+      file: services.yml
+      service: rabbitmq
+    healthcheck:
+      test: ['CMD', 'nc', '-z', 'localhost', '15672']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  mongo:
+    extends:
+      file: services.yml
+      service: mongo
+
+  redis:
+    extends:
+      file: services.yml
+      service: redis
+
+  worker01:
+    extends:
+      file: services.yml
+      service: worker
+    environment:
+      WORKER_NAME: worker01
+    depends_on:
+      broker:
+        condition: service_healthy
+
+  worker02:
+    extends:
+      file: services.yml
+      service: worker
+    environment:
+      WORKER_NAME: worker02
+    depends_on:
+      broker:
+        condition: service_healthy
+
+  worker03:
+    extends:
+      file: services.yml
+      service: worker
+    environment:
+      WORKER_NAME: worker03
+    depends_on:
+      broker:
+        condition: service_healthy

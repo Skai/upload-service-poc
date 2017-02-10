@@ -1,0 +1,6 @@
+.DS_Store
+*.log
+*tmp
+*node_modules
+client/vuejs/test/unit/coverage
+client/vuejs/dist

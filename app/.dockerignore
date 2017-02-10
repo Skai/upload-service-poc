@@ -1,0 +1,6 @@
+.DS_Store
+.git
+.gitignore
+.gulp-cache
+node_modules*
+uploads/*

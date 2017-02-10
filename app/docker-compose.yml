@@ -1,0 +1,13 @@
+version: '2'
+services:
+  express:
+    build: .
+    expose:
+      - '3000'
+      - '61614'
+    ports:
+      - '3000:3000'
+      - '61614:61614'
+    command: 'yarn run dev'
+    volumes:
+      - ${PWD}:/workspace
