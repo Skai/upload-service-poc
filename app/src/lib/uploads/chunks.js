@@ -55,6 +55,7 @@ function initChunks (fileSize) {
     start = end
     end = start + chunkSize
   }
+  _this.chunks[_this.chunks.length - 1].end = fileSize
 }
 
 export { Chunks }
