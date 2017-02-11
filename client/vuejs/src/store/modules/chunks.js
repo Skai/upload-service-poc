@@ -6,7 +6,13 @@ const state = {
 
 const getters = {
   chunksByUploadId: (state) => (id) => {
-    return state.all.filter(chunk => chunk.uploadId === id)
+    let chunks = state.all.filter(chunk => chunk.uploadId === id)
+    chunks.sort((a, b) => {
+      if (a.start < b.start) return -1
+      if (a.start > b.start) return 1
+      return 0
+    })
+    return chunks
   }
 }
 

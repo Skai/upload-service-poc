@@ -7,7 +7,15 @@
       <span class="size">({{ size | humanSize }})</span>
     </div>
     <div class="date"> {{ date | humanDate }}</div>
-    <progress-bar v-for="chunk in chunks" v-bind:id="chunk.id"></progress-bar>
+    <table>
+      <tr v-for="(chunk, i) in chunks">
+        <td v-for="c in cellsBefore(i)"></td>
+        <td :style="{ width: chunkWidth(chunk) }">
+          <progress-bar v-bind:id="chunk.id"></progress-bar>
+        </td>
+        <td v-for="c in cellsAfter(i)"></td>
+      </tr>
+    </table>
     <a :href="url" class="url" v-if="hasUrl()">Download</a>
   </div>
 </template>
@@ -43,15 +51,25 @@ export default {
     'size',
     'url',
     'id'
+    // 'chunks'
   ],
 
   methods: {
-    hasChunks () {
-      return this.chunks.length > 0
-    },
-
     hasUrl () {
       return typeof this.url !== 'undefined' && this.url !== ''
+    },
+
+    chunkWidth (chunk) {
+      let p = (parseInt(chunk.end) - parseInt(chunk.start)) / parseInt(this.size)
+      return (Math.round(p * 100)).toString() + '%'
+    },
+
+    cellsBefore (index) {
+      return index
+    },
+
+    cellsAfter (index) {
+      return (this.chunks.length - ++index)
     }
   },
 
@@ -120,29 +138,12 @@ export default {
   margin-top: 0.5em;
 }
 
-.progress-bar {
+table {
   width: 100%;
-  background: rgba(255, 255, 255, 0.5);
-  height: 16px;
-
-  .bar {
-    height: 16px;
-    background-color: #8bc34a;
-    overflow: hidden;
-    box-sizing: border-box;
-    padding-right: 5px;
-  }
-
-  .text {
-    display: block;
-    width: 100%;
-    padding-right: 1em;
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 16px;
-    color: white;
-    text-align: right;
-  }
+  border: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
 }
-
 </style>

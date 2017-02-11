@@ -37,9 +37,10 @@ export default {
 
 .progress-bar {
   width: 100%;
-  background: #eee;
+  background: #e4e4e4;
   height: 16px;
-  margin-top: 6px;
+  margin-top: 4px;
+  overflow: hidden;
 
   .bar {
     height: 16px;
