@@ -3,4 +3,4 @@
 *tmp
 *node_modules
 client/vuejs/test/unit/coverage
-client/vuejs/dist
+client/dist
