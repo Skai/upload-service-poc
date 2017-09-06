@@ -7,7 +7,7 @@ A ___message___ and ___worker___ based upload service (proof of concept)
 - downloads are streamed from individual chunks back to browser.
 - workers handle uploads via http `POST` requests to dynamically generated end points.
 
-![Demo Preview](https://s3-eu-west-1.amazonaws.com/jng/misc/service-demo-screenshot-v2.png "Demo Preview")
+![Demo Preview](./images/demo-preview.png "Demo Preview")
 
 ### Table of Contents
 
