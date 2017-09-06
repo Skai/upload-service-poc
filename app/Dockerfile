@@ -1,10 +1,10 @@
-FROM jng5/jessie-yarn-secure
+FROM node:latest
 MAINTAINER Julie Ng <hello@julie.io>
 
 WORKDIR /workspace
 
 COPY ["package.json", "./"]
 
-RUN yarn install
+RUN npm install
 
 COPY src/* src/

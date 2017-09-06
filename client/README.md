@@ -15,16 +15,14 @@ Run **inside** the `./vuejs` folder:
 
 ``` bash
 # install modules
-yarn install
+npm install
 
 # compile to ./../dist for development
-yarn run webpack:watch
+npm run webpack:watch
 
 # compile to ./../dist for production
-yarn run build
+npm run build
 ```
-
-Note: npm is lame. Use [yarn](http://yarnpkg.com) instead. 
 
 ### 2. State Management with [Vuex](https://vuex.vuejs.org/en/getting-started.html)
 

@@ -9,7 +9,7 @@ services:
 
   app:
     build: ./app
-    command: 'yarn run dev'
+    command: 'npm run dev'
     expose:
       - '3000'
       - '61614'
@@ -52,7 +52,7 @@ services:
 
   worker:
     build: ./worker
-    command: 'yarn run dev'
+    command: 'npm run dev'
     expose:
         - '3001'
     environment:
